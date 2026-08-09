@@ -1,0 +1,21 @@
+<div class="dashboard-wrapper">
+
+  <div class="dashboard-header">
+    <h1>Panel de Nexora</h1>
+    <button class="logout-btn" (click)="cerrarSesion()">Cerrar sesión</button>
+  </div>
+
+  <div class="welcome-card">
+    <p class="welcome-label">Bienvenido</p>
+    <h2>{{ usuario?.nombre }}</h2>
+    <p class="welcome-email">{{ usuario?.email }}</p>
+  </div>
+
+  <div class="info-box">
+    <p>
+      Esta es tu página protegida — solo se puede ver si iniciaste sesión.
+      Aquí puedes ir agregando más adelante: ventas, inventario, reportes, etc.
+    </p>
+  </div>
+
+</div>
