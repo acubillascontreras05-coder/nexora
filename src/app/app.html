@@ -1,3 +1,4 @@
+<app-particle-background></app-particle-background>
 
 <!-- ================================
      BARRA DE NAVEGACIÓN
@@ -9,33 +10,46 @@
     NEXORA
   </div>
 
-  <div class="nav-links">
-   <a routerLink="/" fragment="inicio">Inicio</a>
+  <button class="menu-toggle" (click)="toggleMenu()" aria-label="Abrir menú">
+    ☰
+  </button>
+
+  <div class="nav-links" [class.open]="menuAbierto">
+    <a routerLink="/" fragment="inicio" (click)="cerrarMenu()">Inicio</a>
 
     <div class="dropdown">
-  <span class="dropdown-trigger">Servicios</span>
-  <div class="dropdown-menu">
-    <a routerLink="/servicios/sistemas-empresariales">Sistemas empresariales</a>
-    <a routerLink="/servicios/paginas-web">Páginas web</a>
-    <a routerLink="/servicios/inventario-y-ventas">Inventario y ventas</a>
-    <a routerLink="/servicios/automatizacion-e-ia">Automatización e IA</a>
-    <a routerLink="/servicios/datos-y-reportes">Datos y reportes</a>
-    <a routerLink="/servicios/soporte-tecnologico">Soporte tecnológico</a>
-  </div>
-</div>
+      <span class="dropdown-trigger">Servicios</span>
+      <div class="dropdown-menu">
+        <a routerLink="/servicios/sistemas-empresariales" (click)="cerrarMenu()">Sistemas empresariales</a>
+        <a routerLink="/servicios/paginas-web" (click)="cerrarMenu()">Páginas web</a>
+        <a routerLink="/servicios/inventario-y-ventas" (click)="cerrarMenu()">Inventario y ventas</a>
+        <a routerLink="/servicios/automatizacion-e-ia" (click)="cerrarMenu()">Automatización e IA</a>
+        <a routerLink="/servicios/datos-y-reportes" (click)="cerrarMenu()">Datos y reportes</a>
+        <a routerLink="/servicios/soporte-tecnologico" (click)="cerrarMenu()">Soporte tecnológico</a>
+      </div>
+    </div>
 
     <div class="dropdown">
       <span class="dropdown-trigger">Soluciones</span>
       <div class="dropdown-menu">
-        <a routerLink="/soluciones/inventario">Control de inventario</a>
-        <a routerLink="/soluciones/ventas">Sistema de ventas</a>
-        <a routerLink="/soluciones/presencia-digital">Presencia digital</a>
-        <a routerLink="/soluciones/automatizacion">Automatización</a>
+        <a routerLink="/soluciones/inventario" (click)="cerrarMenu()">Control de inventario</a>
+        <a routerLink="/soluciones/ventas" (click)="cerrarMenu()">Sistema de ventas</a>
+        <a routerLink="/soluciones/presencia-digital" (click)="cerrarMenu()">Presencia digital</a>
+        <a routerLink="/soluciones/automatizacion" (click)="cerrarMenu()">Automatización</a>
       </div>
     </div>
 
-    <a routerLink="/" fragment="nosotros">Nosotros</a>
-    <a routerLink="/" fragment="contacto">Contacto</a>
+    <a routerLink="/" fragment="nosotros" (click)="cerrarMenu()">Nosotros</a>
+    <a routerLink="/" fragment="contacto" (click)="cerrarMenu()">Contacto</a>
+
+    <div class="nav-user-mobile" *ngIf="estaLogueado; else botonLoginMobile">
+      <a routerLink="/dashboard" class="user-name" (click)="cerrarMenu()">Hola, {{ usuario?.nombre }}</a>
+      <button class="logout-btn" (click)="cerrarSesion()">Cerrar sesión</button>
+    </div>
+
+    <ng-template #botonLoginMobile>
+      <a routerLink="/login" class="login-btn" (click)="cerrarMenu()">Iniciar sesión</a>
+    </ng-template>
   </div>
 
   <div class="nav-user" *ngIf="estaLogueado; else botonLogin">
@@ -57,4 +71,3 @@
 ================================ -->
 
 <router-outlet></router-outlet>
-```
