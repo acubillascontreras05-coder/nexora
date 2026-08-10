@@ -38,7 +38,7 @@ export class LoginComponent {
       next: () => {
         this.cargando = false;
         this.cdr.detectChanges();
-        this.router.navigate(['/']);
+        this.router.navigate(['/dashboard']);
       },
       error: (err) => {
         this.cargando = false;

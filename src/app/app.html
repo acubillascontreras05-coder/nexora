@@ -1,3 +1,4 @@
+
 <!-- ================================
      BARRA DE NAVEGACIÓN
 ================================ -->
@@ -9,11 +10,32 @@
   </div>
 
   <div class="nav-links">
-    <a href="#inicio">Inicio</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#soluciones">Soluciones</a>
-    <a href="#nosotros">Nosotros</a>
-    <a href="#contacto">Contacto</a>
+   <a routerLink="/" fragment="inicio">Inicio</a>
+
+    <div class="dropdown">
+      <span class="dropdown-trigger">Servicios</span>
+      <div class="dropdown-menu">
+        <a routerLink="/" fragment="servicios">Sistemas empresariales</a>
+        <a routerLink="/" fragment="servicios">Páginas web</a>
+        <a routerLink="/" fragment="servicios">Inventario y ventas</a>
+        <a routerLink="/" fragment="servicios">Automatización e IA</a>
+        <a routerLink="/" fragment="servicios">Datos y reportes</a>
+        <a routerLink="/" fragment="servicios">Soporte tecnológico</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <span class="dropdown-trigger">Soluciones</span>
+      <div class="dropdown-menu">
+        <a routerLink="/soluciones/inventario">Control de inventario</a>
+        <a routerLink="/soluciones/ventas">Sistema de ventas</a>
+        <a routerLink="/soluciones/presencia-digital">Presencia digital</a>
+        <a routerLink="/soluciones/automatizacion">Automatización</a>
+      </div>
+    </div>
+
+    <a routerLink="/" fragment="nosotros">Nosotros</a>
+    <a routerLink="/" fragment="contacto">Contacto</a>
   </div>
 
   <div class="nav-user" *ngIf="estaLogueado; else botonLogin">
@@ -35,3 +57,4 @@
 ================================ -->
 
 <router-outlet></router-outlet>
+```
