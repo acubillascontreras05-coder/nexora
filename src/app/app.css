@@ -1128,3 +1128,126 @@ a.secondary-btn {
   }
 
 }
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.carousel-track {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.carousel-card {
+  padding: 40px 30px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.carousel-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(15,23,42,0.08);
+  border-color: #bae6fd;
+}
+
+.carousel-icon {
+  font-size: 40px;
+  margin-bottom: 18px;
+}
+
+.carousel-card h3 {
+  font-size: 20px;
+  margin: 0 0 16px;
+  color: #0f172a;
+}
+
+.carousel-divider {
+  width: 40px;
+  height: 3px;
+  background: #0284c7;
+  margin: 0 auto 18px;
+  border-radius: 2px;
+}
+
+.carousel-card p {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  min-height: 60px;
+}
+
+.carousel-btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border: 1px solid #0284c7;
+  border-radius: 50px;
+  color: #0284c7;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.carousel-card:hover .carousel-btn {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.carousel-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.3s;
+  flex-shrink: 0;
+}
+
+.carousel-arrow:hover:not(:disabled) {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .carousel-track {
+    grid-template-columns: 1fr;
+  }
+}
+.carousel-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: rgba(2, 132, 199, 0.08);
+  color: #0284c7;
+}
+
+.carousel-icon i {
+  font-size: 26px;
+}
+.problem-card {
+  cursor: pointer;
+}

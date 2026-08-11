@@ -24,12 +24,12 @@
     <div class="hero-buttons">
 
       <a href="https://wa.me/51907520777?text=Hola%2C%20quiero%20solicitar%20una%20asesor%C3%ADa%20para%20mi%20negocio." target="_blank" rel="noopener" class="primary-btn">
-  Solicitar asesoría
-</a>
+        Solicitar asesoría
+      </a>
 
       <a href="#soluciones" class="secondary-btn">
-  Conocer más
-</a>
+        Conocer más
+      </a>
 
     </div>
 
@@ -110,6 +110,8 @@
   </div>
 
 </section>
+
+
 <!-- ================================
      PROBLEMAS QUE RESOLVEMOS
 ================================ -->
@@ -138,7 +140,7 @@
 
   <div class="problems-grid">
 
-    <article class="problem-card">
+    <article class="problem-card" routerLink="/soluciones/inventario">
 
       <div class="problem-number">
         01
@@ -161,7 +163,7 @@
     </article>
 
 
-    <article class="problem-card">
+    <article class="problem-card" routerLink="/soluciones/ventas">
 
       <div class="problem-number">
         02
@@ -184,7 +186,7 @@
     </article>
 
 
-    <article class="problem-card">
+    <article class="problem-card" routerLink="/soluciones/presencia-digital">
 
       <div class="problem-number">
         03
@@ -207,7 +209,7 @@
     </article>
 
 
-    <article class="problem-card">
+    <article class="problem-card" routerLink="/soluciones/automatizacion">
 
       <div class="problem-number">
         04
@@ -233,6 +235,7 @@
 
 </section>
 
+
 <!-- ================================
      SERVICIOS
 ================================ -->
@@ -256,114 +259,54 @@
   </div>
 
 
-  <div class="services-grid">
+  <div class="carousel-wrapper">
 
-    <article class="service-card">
+    <button
+      class="carousel-arrow carousel-arrow-left"
+      (click)="anterior()"
+      [disabled]="!puedeRetroceder"
+      aria-label="Servicio anterior"
+    >
+      ‹
+    </button>
 
-      <div class="service-icon">
-        💻
-      </div>
+    <div class="carousel-track">
 
-      <h3>
-        Sistemas empresariales
-      </h3>
+      <article
+        class="carousel-card"
+        *ngFor="let servicio of serviciosVisibles"
+        [routerLink]="'/servicios/' + servicio.slug"
+      >
 
-      <p>
-        Desarrollamos sistemas para ventas, inventario,
-        caja, compras, clientes y trabajadores.
-      </p>
+        <div class="carousel-icon" [ngSwitch]="servicio.slug">
+          <i *ngSwitchCase="'sistemas-empresariales'" class="fa-solid fa-briefcase"></i>
+          <i *ngSwitchCase="'paginas-web'" class="fa-solid fa-globe"></i>
+          <i *ngSwitchCase="'inventario-y-ventas'" class="fa-solid fa-boxes-stacked"></i>
+          <i *ngSwitchCase="'automatizacion-e-ia'" class="fa-solid fa-robot"></i>
+          <i *ngSwitchCase="'datos-y-reportes'" class="fa-solid fa-chart-column"></i>
+          <i *ngSwitchCase="'soporte-tecnologico'" class="fa-solid fa-headset"></i>
+        </div>
 
-    </article>
+        <h3>{{ servicio.titulo }}</h3>
 
+        <div class="carousel-divider"></div>
 
-    <article class="service-card">
+        <p>{{ servicio.subtitulo }}</p>
 
-      <div class="service-icon">
-        🌐
-      </div>
+        <span class="carousel-btn">Conocer más</span>
 
-      <h3>
-        Páginas web
-      </h3>
+      </article>
 
-      <p>
-        Creamos páginas web profesionales, modernas
-        y adaptadas a celulares.
-      </p>
+    </div>
 
-    </article>
-
-
-    <article class="service-card">
-
-      <div class="service-icon">
-        📦
-      </div>
-
-      <h3>
-        Inventario y ventas
-      </h3>
-
-      <p>
-        Controla productos, stock, ventas, compras
-        y movimientos de tu negocio.
-      </p>
-
-    </article>
-
-
-    <article class="service-card">
-
-      <div class="service-icon">
-        🤖
-      </div>
-
-      <h3>
-        Automatización e IA
-      </h3>
-
-      <p>
-        Automatizamos tareas y procesos para que
-        tu negocio ahorre tiempo.
-      </p>
-
-    </article>
-
-
-    <article class="service-card">
-
-      <div class="service-icon">
-        📊
-      </div>
-
-      <h3>
-        Datos y reportes
-      </h3>
-
-      <p>
-        Convertimos los datos de tu negocio en
-        información útil para tomar decisiones.
-      </p>
-
-    </article>
-
-
-    <article class="service-card">
-
-      <div class="service-icon">
-        🛠️
-      </div>
-
-      <h3>
-        Soporte tecnológico
-      </h3>
-
-      <p>
-        Te ayudamos a solucionar problemas y mantener
-        tus sistemas funcionando correctamente.
-      </p>
-
-    </article>
+    <button
+      class="carousel-arrow carousel-arrow-right"
+      (click)="siguiente()"
+      [disabled]="!puedeAvanzar"
+      aria-label="Siguiente servicio"
+    >
+      ›
+    </button>
 
   </div>
 
@@ -394,8 +337,8 @@
     </p>
 
     <a href="#servicios" class="primary-btn">
-  Conocer nuestras soluciones
-</a>
+      Conocer nuestras soluciones
+    </a>
 
   </div>
 
@@ -457,9 +400,9 @@
       encontraremos una solución.
     </p>
 
-    <button class="primary-btn">
+    <a href="https://wa.me/51907520777?text=Hola%2C%20quiero%20solicitar%20una%20asesor%C3%ADa%20para%20mi%20negocio." target="_blank" rel="noopener" class="primary-btn">
       Solicitar asesoría
-    </button>
+    </a>
 
   </div>
 
