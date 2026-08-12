@@ -1,4 +1,8 @@
 /* =====================================================
+   NEXORA - APP.CSS COMPLETO
+===================================================== */
+
+/* =====================================================
    CONFIGURACIÓN GENERAL
 ===================================================== */
 
@@ -22,7 +26,6 @@ body {
   margin: 0;
 }
 
-
 /* =====================================================
    NAVEGACIÓN
 ===================================================== */
@@ -31,6 +34,7 @@ nav {
   position: absolute;
   top: 0;
   left: 0;
+
   width: 100%;
 
   display: flex;
@@ -51,6 +55,7 @@ nav {
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 35px;
 }
 
@@ -71,10 +76,11 @@ nav {
   background: transparent;
   color: #ffffff;
 
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 8px;
 
   cursor: pointer;
+  text-decoration: none;
 
   transition: 0.3s;
 }
@@ -84,35 +90,219 @@ nav {
   color: #07111f;
 }
 
+/* =====================================================
+   USUARIO
+===================================================== */
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-name {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.logout-btn {
+  padding: 9px 18px;
+
+  background: transparent;
+  color: #ffffff;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+
+  font-size: 13px;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #ffffff;
+  color: #07111f;
+}
 
 /* =====================================================
-   HERO
+   DROPDOWN
+===================================================== */
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  color: #cbd5e1;
+  font-size: 14px;
+  cursor: default;
+
+  transition: 0.3s;
+}
+
+.dropdown-trigger::after {
+  content: "▾";
+  font-size: 10px;
+  transition: 0.2s;
+}
+
+.dropdown:hover .dropdown-trigger {
+  color: #ffffff;
+}
+
+.dropdown:hover .dropdown-trigger::after {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+
+  top: calc(100% + 12px);
+  left: 50%;
+
+  min-width: 220px;
+
+  padding: 8px;
+
+  background: #10141f;
+  border: 1px solid #1e2433;
+  border-radius: 10px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateX(-50%) translateY(-8px);
+
+  transition: 0.25s;
+
+  z-index: 200;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu a {
+  display: block;
+
+  padding: 10px 12px;
+
+  border-radius: 6px;
+
+  color: #cbd5e1;
+  text-decoration: none;
+
+  font-size: 13px;
+
+  transition: 0.2s;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+/* =====================================================
+   MENÚ MÓVIL
+===================================================== */
+
+.menu-toggle {
+  display: none;
+
+  background: transparent;
+  border: none;
+
+  color: #ffffff;
+
+  font-size: 26px;
+
+  cursor: pointer;
+}
+
+.nav-user-mobile {
+  display: none;
+}
+
+/* =====================================================
+   HERO PRINCIPAL
 ===================================================== */
 
 .hero {
+  position: relative;
+
   min-height: 100vh;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  gap: 60px;
+
   padding: 140px 7% 80px;
-  position: relative;
+
   overflow: hidden;
-  background:
-    radial-gradient(
-      circle at 80% 40%,
-      rgba(0, 153, 255, 0.18),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 20% 80%,
-      rgba(0, 80, 180, 0.12),
-      transparent 30%
-    ),
-    transparent;
+
+  background: #07111f;
 }
 
+/* =====================================================
+   VIDEO HERO
+===================================================== */
 
-/* Líneas decorativas */
+.hero-video {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  z-index: 0;
+
+  pointer-events: none;
+}
+
+/* =====================================================
+   CAPA OSCURA HERO
+===================================================== */
+
+.hero-overlay {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 10, 20, 0.86),
+      rgba(3, 10, 20, 0.68),
+      rgba(3, 10, 20, 0.78)
+    );
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+/* =====================================================
+   DECORACIÓN HERO
+===================================================== */
 
 .hero::before {
   content: "";
@@ -122,12 +312,16 @@ nav {
   width: 500px;
   height: 500px;
 
-  border: 1px solid rgba(255,255,255,0.04);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 
   border-radius: 50%;
 
   right: -150px;
   top: 150px;
+
+  z-index: 1;
+
+  pointer-events: none;
 }
 
 .hero::after {
@@ -138,22 +332,27 @@ nav {
   width: 700px;
   height: 700px;
 
-  border: 1px solid rgba(255,255,255,0.025);
+  border: 1px solid rgba(255, 255, 255, 0.025);
 
   border-radius: 50%;
 
   right: -250px;
   top: 50px;
+
+  z-index: 1;
+
+  pointer-events: none;
 }
 
-
 /* =====================================================
-   HERO CONTENT
+   CONTENIDO HERO
 ===================================================== */
 
 .hero-content {
   width: 55%;
+
   position: relative;
+
   z-index: 2;
 }
 
@@ -162,10 +361,13 @@ nav {
 
   padding: 8px 14px;
 
-  border: 1px solid rgba(255,255,255,0.15);
+  margin-bottom: 25px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
   border-radius: 50px;
 
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
 
   color: #7dd3fc;
 
@@ -173,8 +375,6 @@ nav {
   font-weight: 600;
 
   letter-spacing: 1.5px;
-
-  margin-bottom: 25px;
 }
 
 .hero h1 {
@@ -192,35 +392,36 @@ nav {
 .hero h1 span {
   display: block;
 
-  background: linear-gradient(
-    90deg,
-    #38bdf8,
-    #60a5fa
-  );
+  background:
+    linear-gradient(
+      90deg,
+      #38bdf8,
+      #60a5fa
+    );
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.hero p {
+.hero-content > p {
   max-width: 650px;
 
   margin: 28px 0;
 
-  color: #94a3b8;
+  color: #cbd5e1;
 
   font-size: 17px;
 
   line-height: 1.8;
 }
 
-
 /* =====================================================
-   BOTONES
+   BOTONES HERO
 ===================================================== */
 
 .hero-buttons {
   display: flex;
+
   gap: 15px;
 
   margin-top: 30px;
@@ -228,6 +429,8 @@ nav {
 
 .primary-btn,
 .secondary-btn {
+  display: inline-block;
+
   padding: 14px 25px;
 
   border-radius: 8px;
@@ -237,6 +440,8 @@ nav {
 
   cursor: pointer;
 
+  text-decoration: none;
+
   transition: 0.3s;
 }
 
@@ -245,37 +450,37 @@ nav {
 
   color: #ffffff;
 
-  background: linear-gradient(
-    135deg,
-    #0284c7,
-    #2563eb
-  );
+  background:
+    linear-gradient(
+      135deg,
+      #0284c7,
+      #2563eb
+    );
 
   box-shadow:
-    0 10px 30px rgba(37,99,235,0.25);
+    0 10px 30px rgba(37, 99, 235, 0.25);
 }
 
 .primary-btn:hover {
   transform: translateY(-2px);
 
   box-shadow:
-    0 15px 35px rgba(37,99,235,0.35);
+    0 15px 35px rgba(37, 99, 235, 0.35);
 }
 
 .secondary-btn {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.03);
 
   color: #ffffff;
 
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .secondary-btn:hover {
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.08);
 
   transform: translateY(-2px);
 }
-
 
 /* =====================================================
    ESTADÍSTICAS
@@ -302,14 +507,13 @@ nav {
 }
 
 .stats small {
-  color: #64748b;
+  color: #94a3b8;
 
   font-size: 12px;
 }
 
-
 /* =====================================================
-   ELEMENTO VISUAL DEL HERO
+   HERO VISUAL
 ===================================================== */
 
 .hero-visual {
@@ -320,7 +524,6 @@ nav {
   display: flex;
 
   justify-content: center;
-
   align-items: center;
 
   z-index: 2;
@@ -349,18 +552,20 @@ nav {
   background:
     linear-gradient(
       145deg,
-      rgba(255,255,255,0.10),
-      rgba(255,255,255,0.03)
+      rgba(255, 255, 255, 0.10),
+      rgba(255, 255, 255, 0.03)
     );
 
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 
   backdrop-filter: blur(20px);
 
   box-shadow:
-    0 30px 80px rgba(0,0,0,0.45);
+    0 30px 80px rgba(0, 0, 0, 0.45);
 
-  transform: perspective(1000px) rotateY(-8deg);
+  transform:
+    perspective(1000px)
+    rotateY(-8deg);
 
   animation: floating 5s ease-in-out infinite;
 }
@@ -416,13 +621,13 @@ nav {
 }
 
 .dashboard-title {
+  margin-bottom: 25px;
+
   color: #94a3b8;
 
   font-size: 12px;
 
   letter-spacing: 1px;
-
-  margin-bottom: 25px;
 }
 
 .dashboard-boxes {
@@ -438,15 +643,15 @@ nav {
 
   border-radius: 10px;
 
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .dashboard-boxes small {
   display: block;
 
-  color: #64748b;
-
   margin-bottom: 7px;
+
+  color: #64748b;
 }
 
 .dashboard-boxes strong {
@@ -460,7 +665,7 @@ nav {
 
   display: flex;
 
-  align-items: end;
+  align-items: flex-end;
 
   gap: 12px;
 
@@ -472,11 +677,12 @@ nav {
 
   border-radius: 5px 5px 0 0;
 
-  background: linear-gradient(
-    to top,
-    #0369a1,
-    #38bdf8
-  );
+  background:
+    linear-gradient(
+      to top,
+      #0369a1,
+      #38bdf8
+    );
 }
 
 .bar-1 {
@@ -503,1094 +709,8 @@ nav {
   height: 90%;
 }
 
-
 /* =====================================================
-   SECCIONES GENERALES
-===================================================== */
-
-.services-section,
-.about-section,
-.contact-section {
-  padding: 120px 7%;
-}
-
-.services-section {
-  background: #f8fafc;
-
-  color: #0f172a;
-}
-
-.section-title {
-  max-width: 700px;
-
-  margin-bottom: 60px;
-}
-
-.section-title span,
-.section-label {
-  color: #0284c7;
-
-  font-size: 12px;
-
-  font-weight: 700;
-
-  letter-spacing: 2px;
-}
-
-.section-title h2,
-.about-content h2,
-.contact-box h2 {
-  margin: 15px 0;
-
-  font-size: clamp(35px, 4vw, 55px);
-
-  line-height: 1.1;
-}
-
-.section-title p,
-.about-content p,
-.contact-box p {
-  color: #64748b;
-
-  line-height: 1.8;
-
-  font-size: 16px;
-}
-
-
-/* =====================================================
-   SERVICIOS
-===================================================== */
-
-.services-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 20px;
-}
-
-.service-card {
-  padding: 35px;
-
-  background: #ffffff;
-
-  border: 1px solid #e2e8f0;
-
-  border-radius: 15px;
-
-  transition: 0.3s;
-}
-
-.service-card:hover {
-  transform: translateY(-8px);
-
-  box-shadow:
-    0 20px 50px rgba(15,23,42,0.08);
-}
-
-.service-icon {
-  font-size: 30px;
-
-  margin-bottom: 20px;
-}
-
-.service-card h3 {
-  margin-bottom: 12px;
-
-  font-size: 19px;
-}
-
-.service-card p {
-  color: #64748b;
-
-  line-height: 1.7;
-
-  font-size: 14px;
-}
-
-
-/* =====================================================
-   SOLUCIONES
-===================================================== */
-.solutions-section {
-  padding: 140px 7%;
-  background:
-    radial-gradient(
-      circle at 80% 50%,
-      rgba(37,99,235,0.18),
-      transparent 35%
-    ),
-    transparent;
-}
-
-.solutions-content {
-  max-width: 850px;
-}
-
-.solutions-content h2 {
-  font-size: clamp(38px, 5vw, 65px);
-
-  line-height: 1.1;
-
-  margin: 20px 0;
-}
-
-.solutions-content h2 span {
-  color: #38bdf8;
-}
-
-.solutions-content p {
-  max-width: 650px;
-
-  color: #94a3b8;
-
-  font-size: 17px;
-
-  line-height: 1.8;
-
-  margin-bottom: 30px;
-}
-
-
-/* =====================================================
-   NOSOTROS
-===================================================== */
-
-.about-section {
-  background: #ffffff;
-
-  color: #0f172a;
-}
-
-.about-content {
-  max-width: 850px;
-}
-
-.about-content h2 {
-  font-weight: 800;
-}
-
-.about-content p {
-  max-width: 750px;
-}
-
-
-/* =====================================================
-   CONTACTO
-===================================================== */
-
-.contact-section {
-  background: #f1f5f9;
-}
-
-.contact-box {
-  max-width: 900px;
-
-  margin: auto;
-
-  text-align: center;
-}
-
-.contact-box p {
-  max-width: 600px;
-
-  margin: 20px auto 30px;
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer {
-  padding: 50px 7%;
-
-  background: #030712;
-
-  color: #ffffff;
-
-  text-align: center;
-}
-
-.footer-logo {
-  font-size: 25px;
-
-  font-weight: 800;
-
-  letter-spacing: 3px;
-
-  margin-bottom: 10px;
-}
-
-footer p {
-  color: #64748b;
-
-  font-size: 14px;
-}
-
-.footer-copy {
-  margin-top: 30px;
-
-  color: #475569;
-
-  font-size: 12px;
-}
-
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-
-@media (max-width: 1000px) {
-
-  .hero {
-    flex-direction: column;
-
-    text-align: center;
-
-    gap: 70px;
-  }
-
-  .hero-content {
-    width: 100%;
-  }
-
-  .hero p {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-buttons,
-  .stats {
-    justify-content: center;
-  }
-
-  .hero-visual {
-    width: 100%;
-  }
-
-  .services-grid {
-    grid-template-columns:
-      repeat(2, 1fr);
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-}
-
-
-@media (max-width: 600px) {
-
-  nav {
-    padding: 22px 5%;
-  }
-
-  .login-btn {
-    display: none;
-  }
-
-  .hero {
-    padding: 120px 5% 70px;
-  }
-
-  .hero h1 {
-    font-size: 45px;
-
-    letter-spacing: -2px;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-  }
-
-  .hero-buttons button {
-    width: 100%;
-  }
-
-  .stats {
-    gap: 25px;
-  }
-
-  .tech-card {
-    width: 100%;
-  }
-
-  .services-section,
-  .about-section,
-  .contact-section {
-    padding: 80px 5%;
-  }
-
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
-
-}
-/* =====================================================
-   PROBLEMAS QUE RESOLVEMOS
-===================================================== */
-
-/* =========================================
-   SECCIÓN PROBLEMAS
-========================================= */
-
-.problems-section {
-  position: relative;
-  overflow: hidden;
-  padding: 120px 8%;
-  min-height: 800px;
-
-  color: white;
-}
-
-
-/* =========================================
-   VIDEO
-========================================= */
-
-.problems-video {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  z-index: 0;
-}
-
-
-/* =========================================
-   CAPA OSCURA
-========================================= */
-
-.problems-overlay {
-  position: absolute;
-  inset: 0;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(3, 10, 25, 0.94),
-      rgba(3, 10, 25, 0.78),
-      rgba(3, 10, 25, 0.88)
-    );
-
-  z-index: 1;
-}
-
-
-/* =========================================
-   CONTENIDO
-========================================= */
-
-.problems-content {
-  position: relative;
-  z-index: 2;
-
-  max-width: 1250px;
-  margin: auto;
-}
-
-
-/* =========================================
-   INTRO
-========================================= */
-
-.section-intro {
-  max-width: 850px;
-  margin-bottom: 60px;
-}
-
-.section-label {
-  display: inline-block;
-
-  margin-bottom: 18px;
-
-  font-size: 13px;
-  font-weight: 700;
-
-  letter-spacing: 3px;
-
-  color: #39a9ff;
-}
-
-.section-intro h2 {
-  margin: 0 0 24px;
-
-  font-size: clamp(42px, 5vw, 68px);
-
-  line-height: 1.05;
-
-  letter-spacing: -2px;
-
-  color: white;
-}
-
-.section-intro p {
-  max-width: 760px;
-
-  font-size: 18px;
-
-  line-height: 1.7;
-
-  color: rgba(255, 255, 255, 0.72);
-}
-
-
-/* =========================================
-   GRID
-========================================= */
-
-.problems-grid {
-  display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 22px;
-}
-
-
-/* =========================================
-   TARJETAS
-========================================= */
-
-.problem-card {
-  position: relative;
-
-  padding: 38px;
-
-  min-height: 250px;
-
-  border: 1px solid rgba(72, 164, 255, 0.20);
-
-  border-radius: 20px;
-
-  background: rgba(8, 20, 38, 0.62);
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    background 0.3s ease;
-}
-
-
-/* =========================================
-   HOVER
-========================================= */
-
-.problem-card:hover {
-  transform: translateY(-7px);
-
-  border-color: rgba(65, 170, 255, 0.65);
-
-  background: rgba(10, 30, 55, 0.75);
-}
-
-
-/* =========================================
-   NUMERO
-========================================= */
-
-.problem-number {
-  margin-bottom: 28px;
-
-  font-size: 13px;
-
-  font-weight: 700;
-
-  letter-spacing: 2px;
-
-  color: #39a9ff;
-}
-
-
-/* =========================================
-   TITULO
-========================================= */
-
-.problem-card h3 {
-  margin: 0 0 15px;
-
-  font-size: 22px;
-
-  line-height: 1.3;
-
-  color: white;
-}
-
-
-/* =========================================
-   DESCRIPCIÓN
-========================================= */
-
-.problem-card p {
-  margin: 0 0 25px;
-
-  font-size: 15px;
-
-  line-height: 1.7;
-
-  color: rgba(255, 255, 255, 0.65);
-}
-
-
-/* =========================================
-   SOLUCIÓN
-========================================= */
-
-.problem-solution {
-  font-size: 14px;
-
-  font-weight: 700;
-
-  color: #42aaff;
-}
-
-
-/* =========================================
-   RESPONSIVE
-========================================= */
-
-@media (max-width: 800px) {
-
-  .problems-section {
-    padding: 80px 6%;
-  }
-
-  .problems-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .section-intro h2 {
-    font-size: 42px;
-  }
-
-}
-
-
-/* =====================================================
-   RESPONSIVE - PROBLEMAS
-===================================================== */
-
-@media (max-width: 700px) {
-
-  .problems-section {
-    padding: 80px 5%;
-  }
-
-  .problems-grid {
-    grid-template-columns: 1fr;
-  }
-
-}
-
-a.login-btn {
-  display: inline-block;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-
-/* =====================================================
-   USUARIO LOGUEADO EN NAVBAR
-===================================================== */
-
-.nav-user {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.user-name {
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.logout-btn {
-  padding: 9px 18px;
-
-  background: transparent;
-  color: #ffffff;
-
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 8px;
-
-  font-size: 13px;
-  cursor: pointer;
-
-  transition: 0.3s;
-}
-
-.logout-btn:hover {
-  background: #ffffff;
-  color: #07111f;
-}
-a.primary-btn,
-a.secondary-btn {
-  display: inline-block;
-  text-decoration: none;
-  text-align: center;
-}
-.dropdown {
-  position: relative;
-}
-
-.dropdown-trigger {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.dropdown-trigger::after {
-  content: "▾";
-  font-size: 10px;
-  transition: 0.2s;
-}
-
-.dropdown:hover .dropdown-trigger::after {
-  transform: rotate(180deg);
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: calc(100% + 12px);
-  left: 50%;
-  transform: translateX(-50%);
-
-  min-width: 220px;
-
-  background: #10141f;
-  border: 1px solid #1e2433;
-  border-radius: 10px;
-
-  padding: 8px;
-
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(-50%) translateY(-8px);
-
-  transition: 0.25s;
-
-  z-index: 200;
-}
-
-.dropdown:hover .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
-
-.dropdown-menu a {
-  display: block;
-  padding: 10px 12px;
-  border-radius: 6px;
-  color: #cbd5e1;
-  text-decoration: none;
-  font-size: 13px;
-  transition: 0.2s;
-}
-
-.dropdown-menu a:hover {
-  background: rgba(255,255,255,0.06);
-  color: #ffffff;
-}
-.dropdown-trigger {
-  color: #cbd5e1;
-  font-size: 14px;
-  cursor: default;
-  transition: 0.3s;
-}
-
-.dropdown:hover .dropdown-trigger {
-  color: #ffffff;
-}
-.menu-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  font-size: 26px;
-  cursor: pointer;
-}
-
-.nav-user-mobile {
-  display: none;
-}
-
-@media (max-width: 1000px) {
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-
-    background: #0b1120;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-
-    padding: 20px 7%;
-    gap: 18px;
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .dropdown-menu {
-    position: static;
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    background: transparent;
-    border: none;
-    padding: 8px 0 0 12px;
-    box-shadow: none;
-  }
-
-  .dropdown-trigger::after {
-    display: none;
-  }
-
-  .nav-user {
-    display: none;
-  }
-
-  .nav-user-mobile {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  .login-btn {
-    display: inline-block !important;
-  }
-
-}
-.carousel-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.carousel-track {
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.carousel-card {
-  padding: 40px 30px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  text-align: center;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.carousel-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(15,23,42,0.08);
-  border-color: #bae6fd;
-}
-
-.carousel-icon {
-  font-size: 40px;
-  margin-bottom: 18px;
-}
-
-.carousel-card h3 {
-  font-size: 20px;
-  margin: 0 0 16px;
-  color: #0f172a;
-}
-
-.carousel-divider {
-  width: 40px;
-  height: 3px;
-  background: #0284c7;
-  margin: 0 auto 18px;
-  border-radius: 2px;
-}
-
-.carousel-card p {
-  color: #64748b;
-  font-size: 14px;
-  line-height: 1.7;
-  margin-bottom: 24px;
-  min-height: 60px;
-}
-
-.carousel-btn {
-  display: inline-block;
-  padding: 10px 22px;
-  border: 1px solid #0284c7;
-  border-radius: 50px;
-  color: #0284c7;
-  font-size: 13px;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.carousel-card:hover .carousel-btn {
-  background: #0284c7;
-  color: #ffffff;
-}
-
-.carousel-arrow {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid #cbd5e1;
-  background: #ffffff;
-  color: #0f172a;
-  font-size: 22px;
-  cursor: pointer;
-  transition: 0.3s;
-  flex-shrink: 0;
-}
-
-.carousel-arrow:hover:not(:disabled) {
-  background: #0284c7;
-  color: #ffffff;
-  border-color: #0284c7;
-}
-
-.carousel-arrow:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-@media (max-width: 900px) {
-  .carousel-track {
-    grid-template-columns: 1fr;
-  }
-}
-.carousel-icon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 18px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-  background: rgba(2, 132, 199, 0.08);
-  color: #0284c7;
-}
-
-.carousel-icon i {
-  font-size: 26px;
-}
-.problem-card {
-  cursor: pointer;
-}
-.hero {
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-video {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  z-index: 0;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-
-  background: rgba(3, 10, 20, 0.72);
-
-  z-index: 1;
-}
-
-.hero-content,
-.hero-visual {
-  position: relative;
-  z-index: 2;
-}
-```css
-/* =====================================================
-   NEXORA - AJUSTES DEL NUEVO HTML
-===================================================== */
-
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero-section {
-  min-height: 100vh;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 60px;
-
-  padding: 140px 7% 80px;
-
-  position: relative;
-  overflow: hidden;
-
-  background:
-    radial-gradient(
-      circle at 80% 40%,
-      rgba(0, 153, 255, 0.18),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 20% 80%,
-      rgba(0, 80, 180, 0.12),
-      transparent 30%
-    ),
-    #07111f;
-}
-
-
-/* Decoración del HERO */
-
-.hero-section::before {
-  content: "";
-
-  position: absolute;
-
-  width: 500px;
-  height: 500px;
-
-  border: 1px solid rgba(255,255,255,0.04);
-
-  border-radius: 50%;
-
-  right: -150px;
-  top: 150px;
-
-  pointer-events: none;
-}
-
-.hero-section::after {
-  content: "";
-
-  position: absolute;
-
-  width: 700px;
-  height: 700px;
-
-  border: 1px solid rgba(255,255,255,0.025);
-
-  border-radius: 50%;
-
-  right: -250px;
-  top: 50px;
-
-  pointer-events: none;
-}
-
-
-/* =====================================================
-   HERO CONTENT
-===================================================== */
-
-.hero-section .hero-content {
-  width: 55%;
-
-  position: relative;
-
-  z-index: 2;
-}
-
-.hero-section h1 {
-  margin: 0;
-
-  font-size: clamp(45px, 6vw, 80px);
-
-  line-height: 1.05;
-
-  letter-spacing: -3px;
-
-  font-weight: 800;
-}
-
-.hero-section h1 span {
-  display: block;
-
-  background:
-    linear-gradient(
-      90deg,
-      #38bdf8,
-      #60a5fa
-    );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-section .hero-content > p {
-  max-width: 650px;
-
-  margin: 28px 0;
-
-  color: #94a3b8;
-
-  font-size: 17px;
-
-  line-height: 1.8;
-}
-
-
-/* =====================================================
-   HERO VISUAL
-===================================================== */
-
-.hero-section .hero-visual {
-  width: 40%;
-
-  position: relative;
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  z-index: 2;
-}
-
-
-/* =====================================================
-   PROBLEMAS / VIDEO
+   PROBLEMAS
 ===================================================== */
 
 .problems-section {
@@ -1607,15 +727,15 @@ a.secondary-btn {
   color: #ffffff;
 }
 
-
 /* =====================================================
-   VIDEO DE FONDO
+   VIDEO PROBLEMAS
 ===================================================== */
 
 .problems-video {
   position: absolute;
 
-  inset: 0;
+  top: 0;
+  left: 0;
 
   width: 100%;
   height: 100%;
@@ -1623,11 +743,12 @@ a.secondary-btn {
   object-fit: cover;
 
   z-index: 0;
+
+  pointer-events: none;
 }
 
-
 /* =====================================================
-   CAPA OSCURA DEL VIDEO
+   OVERLAY PROBLEMAS
 ===================================================== */
 
 .problems-overlay {
@@ -1635,20 +756,21 @@ a.secondary-btn {
 
   inset: 0;
 
-  z-index: 1;
-
   background:
     linear-gradient(
       90deg,
-      rgba(3, 10, 25, 0.95),
+      rgba(3, 10, 25, 0.94),
       rgba(3, 10, 25, 0.78),
       rgba(3, 10, 25, 0.88)
     );
+
+  z-index: 1;
+
+  pointer-events: none;
 }
 
-
 /* =====================================================
-   CONTENIDO SOBRE EL VIDEO
+   CONTENIDO PROBLEMAS
 ===================================================== */
 
 .problems-content {
@@ -1661,29 +783,24 @@ a.secondary-btn {
   margin: 0 auto;
 }
 
-
-/* =====================================================
-   INTRO DE PROBLEMAS
-===================================================== */
-
 .section-intro {
   max-width: 850px;
 
   margin-bottom: 60px;
 }
 
-.section-intro .section-label {
+.section-label {
   display: inline-block;
 
   margin-bottom: 18px;
+
+  color: #39a9ff;
 
   font-size: 13px;
 
   font-weight: 700;
 
   letter-spacing: 3px;
-
-  color: #39a9ff;
 }
 
 .section-intro h2 {
@@ -1703,16 +820,15 @@ a.secondary-btn {
 
   margin: 0;
 
+  color: rgba(255, 255, 255, 0.72);
+
   font-size: 18px;
 
   line-height: 1.7;
-
-  color: rgba(255,255,255,0.72);
 }
 
-
 /* =====================================================
-   GRID DE PROBLEMAS
+   GRID PROBLEMAS
 ===================================================== */
 
 .problems-grid {
@@ -1723,11 +839,6 @@ a.secondary-btn {
   gap: 22px;
 }
 
-
-/* =====================================================
-   TARJETAS
-===================================================== */
-
 .problem-card {
   position: relative;
 
@@ -1735,14 +846,13 @@ a.secondary-btn {
 
   padding: 38px;
 
-  border: 1px solid rgba(72,164,255,0.20);
+  border: 1px solid rgba(72, 164, 255, 0.20);
 
   border-radius: 20px;
 
-  background: rgba(8,20,38,0.62);
+  background: rgba(8, 20, 38, 0.62);
 
   backdrop-filter: blur(12px);
-
   -webkit-backdrop-filter: blur(12px);
 
   cursor: pointer;
@@ -1757,77 +867,56 @@ a.secondary-btn {
 .problem-card:hover {
   transform: translateY(-7px);
 
-  border-color: rgba(65,170,255,0.65);
+  border-color: rgba(65, 170, 255, 0.65);
 
-  background: rgba(10,30,55,0.78);
+  background: rgba(10, 30, 55, 0.78);
 
   box-shadow:
-    0 20px 50px rgba(0,0,0,0.25);
+    0 20px 50px rgba(0, 0, 0, 0.25);
 }
-
-
-/* =====================================================
-   NUMERO
-===================================================== */
 
 .problem-number {
   margin-bottom: 28px;
+
+  color: #39a9ff;
 
   font-size: 13px;
 
   font-weight: 700;
 
   letter-spacing: 2px;
-
-  color: #39a9ff;
 }
-
-
-/* =====================================================
-   TITULO
-===================================================== */
 
 .problem-card h3 {
   margin: 0 0 15px;
 
+  color: #ffffff;
+
   font-size: 22px;
 
   line-height: 1.3;
-
-  color: #ffffff;
 }
-
-
-/* =====================================================
-   DESCRIPCION
-===================================================== */
 
 .problem-card p {
   margin: 0 0 25px;
 
+  color: rgba(255, 255, 255, 0.65);
+
   font-size: 15px;
 
   line-height: 1.7;
-
-  color: rgba(255,255,255,0.65);
 }
 
-
-/* =====================================================
-   SOLUCION
-===================================================== */
-
 .problem-solution {
+  color: #42aaff;
+
   font-size: 14px;
 
   font-weight: 700;
-
-  color: #42aaff;
 }
 
-
 /* =====================================================
-   SERVICIOS - COMPATIBILIDAD CON TU HTML
+   SERVICIOS
 ===================================================== */
 
 .services-section {
@@ -1845,17 +934,7 @@ a.secondary-btn {
 }
 
 .services-header .section-label {
-  display: inline-block;
-
-  margin-bottom: 15px;
-
   color: #0284c7;
-
-  font-size: 12px;
-
-  font-weight: 700;
-
-  letter-spacing: 2px;
 }
 
 .services-header h2 {
@@ -1875,7 +954,6 @@ a.secondary-btn {
 
   line-height: 1.8;
 }
-
 
 /* =====================================================
    CARRUSEL
@@ -1904,9 +982,9 @@ a.secondary-btn {
 }
 
 .carousel-card {
-  padding: 40px 30px;
-
   min-height: 330px;
+
+  padding: 40px 30px;
 
   background: #ffffff;
 
@@ -1924,16 +1002,11 @@ a.secondary-btn {
 .carousel-card:hover {
   transform: translateY(-8px);
 
-  box-shadow:
-    0 20px 50px rgba(15,23,42,0.08);
-
   border-color: #bae6fd;
+
+  box-shadow:
+    0 20px 50px rgba(15, 23, 42, 0.08);
 }
-
-
-/* =====================================================
-   ICONOS SVG
-===================================================== */
 
 .carousel-icon {
   width: 64px;
@@ -1948,7 +1021,7 @@ a.secondary-btn {
 
   border-radius: 50%;
 
-  background: rgba(2,132,199,0.08);
+  background: rgba(2, 132, 199, 0.08);
 
   color: #0284c7;
 }
@@ -1958,17 +1031,12 @@ a.secondary-btn {
   height: 30px;
 }
 
-
-/* =====================================================
-   TEXTO DE TARJETAS
-===================================================== */
-
 .carousel-card h3 {
   margin: 0 0 16px;
 
-  font-size: 20px;
-
   color: #0f172a;
+
+  font-size: 20px;
 }
 
 .carousel-divider {
@@ -2018,7 +1086,6 @@ a.secondary-btn {
   color: #ffffff;
 }
 
-
 /* =====================================================
    FLECHAS
 ===================================================== */
@@ -2029,9 +1096,9 @@ a.secondary-btn {
 
   flex-shrink: 0;
 
-  border-radius: 50%;
-
   border: 1px solid #cbd5e1;
+
+  border-radius: 50%;
 
   background: #ffffff;
 
@@ -2047,9 +1114,9 @@ a.secondary-btn {
 .carousel-arrow:hover:not(:disabled) {
   background: #0284c7;
 
-  color: #ffffff;
-
   border-color: #0284c7;
+
+  color: #ffffff;
 }
 
 .carousel-arrow:disabled {
@@ -2057,7 +1124,6 @@ a.secondary-btn {
 
   cursor: not-allowed;
 }
-
 
 /* =====================================================
    SOLUCIONES PARA TU NEGOCIO
@@ -2075,7 +1141,7 @@ a.secondary-btn {
   background:
     radial-gradient(
       circle at 80% 50%,
-      rgba(37,99,235,0.18),
+      rgba(37, 99, 235, 0.18),
       transparent 35%
     ),
     #07111f;
@@ -2088,17 +1154,7 @@ a.secondary-btn {
 }
 
 .business-content .section-label {
-  display: inline-block;
-
-  margin-bottom: 18px;
-
   color: #38bdf8;
-
-  font-size: 12px;
-
-  font-weight: 700;
-
-  letter-spacing: 2px;
 }
 
 .business-content h2 {
@@ -2127,7 +1183,6 @@ a.secondary-btn {
   line-height: 1.8;
 }
 
-
 /* =====================================================
    SOBRE NEXORA
 ===================================================== */
@@ -2147,17 +1202,7 @@ a.secondary-btn {
 }
 
 .about-content .section-label {
-  display: inline-block;
-
-  margin-bottom: 18px;
-
   color: #0284c7;
-
-  font-size: 12px;
-
-  font-weight: 700;
-
-  letter-spacing: 2px;
 }
 
 .about-content h2 {
@@ -2178,7 +1223,6 @@ a.secondary-btn {
   line-height: 1.8;
 }
 
-
 /* =====================================================
    CONTACTO
 ===================================================== */
@@ -2198,7 +1242,7 @@ a.secondary-btn {
   background:
     radial-gradient(
       circle at center,
-      rgba(2,132,199,0.15),
+      rgba(2, 132, 199, 0.15),
       transparent 45%
     ),
     #f1f5f9;
@@ -2211,17 +1255,7 @@ a.secondary-btn {
 }
 
 .contact-content .section-label {
-  display: inline-block;
-
-  margin-bottom: 18px;
-
   color: #0284c7;
-
-  font-size: 12px;
-
-  font-weight: 700;
-
-  letter-spacing: 2px;
 }
 
 .contact-content h2 {
@@ -2244,14 +1278,128 @@ a.secondary-btn {
   line-height: 1.8;
 }
 
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+  padding: 50px 7%;
+
+  background: #030712;
+
+  color: #ffffff;
+
+  text-align: center;
+}
+
+.footer-logo {
+  margin-bottom: 10px;
+
+  font-size: 25px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+footer p {
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+.footer-copy {
+  margin-top: 30px;
+
+  color: #475569;
+
+  font-size: 12px;
+}
 
 /* =====================================================
-   RESPONSIVE
+   RESPONSIVE - 1000px
 ===================================================== */
 
 @media (max-width: 1000px) {
 
-  .hero-section {
+  nav {
+    padding: 22px 5%;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+
+    padding: 20px 7%;
+
+    background: #0b1120;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    gap: 18px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .dropdown-menu {
+    position: static;
+
+    display: block;
+
+    padding: 8px 0 0 12px;
+
+    background: transparent;
+
+    border: none;
+
+    opacity: 1;
+    visibility: visible;
+
+    transform: none;
+  }
+
+  .dropdown-trigger::after {
+    display: none;
+  }
+
+  .nav-user {
+    display: none;
+  }
+
+  .nav-user-mobile {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    width: 100%;
+
+    margin-top: 10px;
+  }
+
+  .login-btn {
+    display: inline-block !important;
+  }
+
+  /* HERO */
+
+  .hero {
     flex-direction: column;
 
     text-align: center;
@@ -2259,42 +1407,50 @@ a.secondary-btn {
     gap: 70px;
   }
 
-  .hero-section .hero-content {
+  .hero-content {
     width: 100%;
   }
 
-  .hero-section .hero-content > p {
+  .hero-content > p {
     margin-left: auto;
     margin-right: auto;
   }
 
-  .hero-section .hero-buttons,
-  .hero-section .stats {
+  .hero-buttons,
+  .stats {
     justify-content: center;
   }
 
-  .hero-section .hero-visual {
+  .hero-visual {
     width: 100%;
   }
+
+  /* PROBLEMAS */
 
   .problems-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* SERVICIOS */
+
   .carousel-track {
     grid-template-columns: repeat(2, 1fr);
   }
-
 }
 
+/* =====================================================
+   RESPONSIVE - 700px
+===================================================== */
 
 @media (max-width: 700px) {
 
-  .hero-section {
+  .hero {
+    min-height: 100vh;
+
     padding: 120px 5% 70px;
   }
 
-  .hero-section h1 {
+  .hero h1 {
     font-size: 45px;
 
     letter-spacing: -2px;
@@ -2316,6 +1472,8 @@ a.secondary-btn {
     width: 100%;
   }
 
+  /* PROBLEMAS */
+
   .problems-section {
     padding: 80px 5%;
   }
@@ -2327,6 +1485,8 @@ a.secondary-btn {
   .section-intro h2 {
     font-size: 42px;
   }
+
+  /* SERVICIOS */
 
   .services-section,
   .business-section,
@@ -2347,9 +1507,11 @@ a.secondary-btn {
   .carousel-arrow {
     display: none;
   }
-
 }
 
+/* =====================================================
+   RESPONSIVE - 500px
+===================================================== */
 
 @media (max-width: 500px) {
 
@@ -2357,7 +1519,7 @@ a.secondary-btn {
     grid-template-columns: 1fr;
   }
 
-  .hero-section h1 {
+  .hero h1 {
     font-size: 40px;
   }
 
@@ -2369,5 +1531,143 @@ a.secondary-btn {
     font-size: 36px;
   }
 
+  .stats {
+    flex-wrap: wrap;
+  }
+}
+/* =====================================================
+   VIDEO DE FONDO - HERO
+===================================================== */
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
 }
 
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7,17,31,0.75), rgba(7,17,31,0.92));
+  z-index: 1;
+}
+
+.hero-content,
+.hero-visual {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =====================================================
+   VIDEO DE FONDO - PROBLEMAS
+===================================================== */
+
+.problems-section .section-intro h2,
+.problems-section .section-intro p {
+  color: #ffffff;
+}
+
+.problems-section .section-intro span {
+  color: #7dd3fc;
+}
+
+.problems-section .section-title span {
+  color: #7dd3fc;
+}
+
+.problems-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.problems-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 17, 31, 0.55);
+  z-index: 1;
+}
+
+.problems-content {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =====================================================
+   NUEVOS NOMBRES DE SECCIONES
+===================================================== */
+
+.section-intro,
+.services-header {
+  max-width: 700px;
+  margin-bottom: 60px;
+}
+
+.services-carousel {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.business-section {
+  padding: 140px 7%;
+  position: relative;
+  background:
+    radial-gradient(circle at 80% 50%, rgba(37,99,235,0.18), transparent 35%),
+    transparent;
+}
+
+.business-content {
+  max-width: 850px;
+}
+
+.business-content h2 {
+  font-size: clamp(38px, 5vw, 65px);
+  line-height: 1.1;
+  margin: 20px 0;
+}
+
+.business-content h2 span {
+  color: #38bdf8;
+}
+
+.business-content p {
+  max-width: 650px;
+  color: #94a3b8;
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.contact-content {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.contact-content p {
+  max-width: 600px;
+  margin: 20px auto 30px;
+}
+
+.carousel-icon svg {
+  width: 30px;
+  height: 30px;
+}

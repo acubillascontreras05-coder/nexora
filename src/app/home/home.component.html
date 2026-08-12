@@ -1,26 +1,18 @@
-
 <!-- =========================================================
-     HERO
+     HERO PRINCIPAL
 ========================================================= -->
 
-<section class="hero">
+<section class="hero-section hero" id="inicio">
 
-  <!-- CONTENIDO PRINCIPAL -->
-<video
-  class="hero-video"
-  autoplay
-  muted
-  loop
-  playsinline
-  preload="auto"
->
-  <source
-    src="/videos/nexora-bg.mp4"
-    type="video/mp4"
-  >
+  <!-- VIDEO DE FONDO -->
+ <video #heroVideo class="hero-video" autoplay muted loop playsinline preload="auto">
+    <source src="/videos/nexora-bg.mp4" type="video/mp4" />
+    Tu navegador no soporta videos HTML5.
+  </video>
 
-  Tu navegador no soporta videos HTML5.
-</video>
+  <div class="hero-overlay"></div>
+
+  <!-- CONTENIDO DEL HERO -->
   <div class="hero-content">
 
     <span class="badge">
@@ -40,8 +32,8 @@
 
     <div class="hero-buttons">
 
-      <a
-        href="https://wa.me/51907520777?text=Hola%2C%20quiero%20solicitar%20una%20asesor%C3%ADa%20para%20mi%20negocio."
+      
+       <a href="https://wa.me/51907520777?text=Hola%2C%20quiero%20solicitar%20una%20asesor%C3%ADa%20para%20mi%20negocio."
         target="_blank"
         rel="noopener"
         class="primary-btn"
@@ -49,17 +41,11 @@
         Solicitar asesoría
       </a>
 
-      <a
-        href="#soluciones"
-        class="secondary-btn"
-      >
+      <a href="#soluciones" class="secondary-btn">
         Conocer más
       </a>
 
     </div>
-
-
-    <!-- ESTADÍSTICAS -->
 
     <div class="stats">
 
@@ -82,9 +68,7 @@
 
   </div>
 
-
-  <!-- TARJETA TECNOLÓGICA -->
-
+  <!-- DASHBOARD -->
   <div class="hero-visual">
 
     <div class="glow"></div>
@@ -118,14 +102,12 @@
         </div>
 
         <div class="chart">
-
           <div class="bar bar-1"></div>
           <div class="bar bar-2"></div>
           <div class="bar bar-3"></div>
           <div class="bar bar-4"></div>
           <div class="bar bar-5"></div>
           <div class="bar bar-6"></div>
-
         </div>
 
       </div>
@@ -137,43 +119,21 @@
 </section>
 
 
-
 <!-- =========================================================
-     PROBLEMAS / SOLUCIONES
+     SEGUNDO HERO / PROBLEMAS
 ========================================================= -->
 
-<section
-  class="problems-section"
-  id="soluciones"
->
+<section class="problems-section" id="problemas">
 
   <!-- VIDEO DE FONDO -->
-
-  <video
-    class="problems-video"
-    autoplay
-    muted
-    loop
-    playsinline
-  >
-
-    <source
-      src="/videos/14492092_1920_1080_30fps.mp4"
-      type="video/mp4"
-    >
-
+  <video #problemsVideo class="problems-video" autoplay muted loop playsinline preload="auto">
+    <source src="/videos/14492092_1920_1080_30fps.mp4" type="video/mp4" />
     Tu navegador no soporta videos HTML5.
-
   </video>
-
-
-  <!-- CAPA OSCURA -->
 
   <div class="problems-overlay"></div>
 
-
   <!-- CONTENIDO -->
-
   <div class="problems-content">
 
     <div class="section-intro">
@@ -195,121 +155,51 @@
 
     </div>
 
-
-    <!-- TARJETAS -->
-
+    <!-- 4 TARJETAS -->
     <div class="problems-grid">
 
-
-      <!-- PROBLEMA 01 -->
-
-      <article
-        class="problem-card"
-        routerLink="/soluciones/inventario"
-      >
-
-        <div class="problem-number">
-          01
-        </div>
-
-        <h3>
-          ¿No controlas tu inventario?
-        </h3>
-
+      <article class="problem-card" routerLink="/soluciones/inventario">
+        <div class="problem-number">01</div>
+        <h3>¿No controlas tu inventario?</h3>
         <p>
           Digitalizamos tus productos, stock, compras
           y movimientos para que siempre sepas
           qué tienes disponible.
         </p>
-
-        <span class="problem-solution">
-          → Sistema de inventario
-        </span>
-
+        <span class="problem-solution">→ Sistema de inventario</span>
       </article>
 
-
-      <!-- PROBLEMA 02 -->
-
-      <article
-        class="problem-card"
-        routerLink="/soluciones/ventas"
-      >
-
-        <div class="problem-number">
-          02
-        </div>
-
-        <h3>
-          ¿Tus ventas están desordenadas?
-        </h3>
-
+      <article class="problem-card" routerLink="/soluciones/ventas">
+        <div class="problem-number">02</div>
+        <h3>¿Tus ventas están desordenadas?</h3>
         <p>
           Creamos sistemas para controlar ventas,
           caja, clientes y productos desde un
           solo lugar.
         </p>
-
-        <span class="problem-solution">
-          → Sistema de ventas
-        </span>
-
+        <span class="problem-solution">→ Sistema de ventas</span>
       </article>
 
-
-      <!-- PROBLEMA 03 -->
-
-      <article
-        class="problem-card"
-        routerLink="/soluciones/presencia-digital"
-      >
-
-        <div class="problem-number">
-          03
-        </div>
-
-        <h3>
-          ¿Tu negocio no tiene presencia digital?
-        </h3>
-
+      <article class="problem-card" routerLink="/soluciones/presencia-digital">
+        <div class="problem-number">03</div>
+        <h3>¿Tu negocio no tiene presencia digital?</h3>
         <p>
           Diseñamos páginas web, catálogos digitales
           y tiendas online para que tus clientes
           puedan encontrarte.
         </p>
-
-        <span class="problem-solution">
-          → Presencia digital
-        </span>
-
+        <span class="problem-solution">→ Presencia digital</span>
       </article>
 
-
-      <!-- PROBLEMA 04 -->
-
-      <article
-        class="problem-card"
-        routerLink="/soluciones/automatizacion"
-      >
-
-        <div class="problem-number">
-          04
-        </div>
-
-        <h3>
-          ¿Pierdes tiempo haciendo tareas manuales?
-        </h3>
-
+      <article class="problem-card" routerLink="/soluciones/automatizacion">
+        <div class="problem-number">04</div>
+        <h3>¿Pierdes tiempo haciendo tareas manuales?</h3>
         <p>
           Automatizamos procesos repetitivos para
           que puedas dedicar más tiempo a hacer
           crecer tu negocio.
         </p>
-
-        <span class="problem-solution">
-          → Automatización
-        </span>
-
+        <span class="problem-solution">→ Automatización</span>
       </article>
 
     </div>
@@ -319,53 +209,32 @@
 </section>
 
 
-
 <!-- =========================================================
      SERVICIOS
 ========================================================= -->
 
-<section
-  class="services-section"
-  id="servicios"
->
+<section class="services-section" id="servicios">
 
-  <div class="services-intro">
-
-    <span class="section-label">
-      SERVICIOS
-    </span>
-
+  <div class="services-header">
+    <span class="section-label">SERVICIOS</span>
     <h2>
       Todo lo que tu negocio
       necesita para crecer.
     </h2>
-
     <p>
       Tecnología diseñada para simplificar tus procesos
       y ayudarte a trabajar de manera más eficiente.
     </p>
-
   </div>
 
-
-  <!-- CARRUSEL -->
-
   <div class="services-carousel">
-
-
-    <!-- BOTÓN ANTERIOR -->
 
     <button
       class="carousel-arrow carousel-arrow-left"
       (click)="anterior()"
       [disabled]="!puedeRetroceder"
       aria-label="Servicio anterior"
-    >
-      ‹
-    </button>
-
-
-    <!-- TARJETAS -->
+    >‹</button>
 
     <div class="carousel-track">
 
@@ -375,283 +244,98 @@
         [routerLink]="'/servicios/' + servicio.slug"
       >
 
+        <div class="carousel-icon" [ngSwitch]="servicio.slug">
 
-        <!-- ICONO -->
-
-        <div
-          class="carousel-icon"
-          [ngSwitch]="servicio.slug"
-        >
-
-
-          <!-- SISTEMAS EMPRESARIALES -->
-
-          <svg
-            *ngSwitchCase="'sistemas-empresariales'"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.6"
-            aria-hidden="true"
-          >
-
-            <rect
-              x="3"
-              y="4"
-              width="18"
-              height="16"
-              rx="2"
-            ></rect>
-
+          <svg *ngSwitchCase="'sistemas-empresariales'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
             <path d="M3 9h18"></path>
-
             <path d="M8 13h3"></path>
-
             <path d="M8 17h8"></path>
-
           </svg>
 
-
-          <!-- PÁGINAS WEB -->
-
-          <svg
-            *ngSwitchCase="'paginas-web'"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.6"
-            aria-hidden="true"
-          >
-
-            <rect
-              x="3"
-              y="4"
-              width="18"
-              height="16"
-              rx="2"
-            ></rect>
-
+          <svg *ngSwitchCase="'paginas-web'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
             <path d="M3 9h18"></path>
-
             <path d="M8 14l-2 2 2 2"></path>
-
             <path d="M12 14l2 4"></path>
-
             <path d="M16 14l2 2-2 2"></path>
-
           </svg>
 
-
-          <!-- INVENTARIO Y VENTAS -->
-
-          <svg
-            *ngSwitchCase="'inventario-y-ventas'"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.6"
-            aria-hidden="true"
-          >
-
+          <svg *ngSwitchCase="'inventario-y-ventas'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
             <path d="M4 7h16v13H4z"></path>
-
             <path d="M8 7V5h8v2"></path>
-
             <path d="M8 11h8"></path>
-
             <path d="M8 15h5"></path>
-
           </svg>
 
-
-          <!-- AUTOMATIZACIÓN E IA -->
-
-          <svg
-            *ngSwitchCase="'automatizacion-e-ia'"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.6"
-            aria-hidden="true"
-          >
-
-            <rect
-              x="6"
-              y="6"
-              width="12"
-              height="12"
-              rx="2"
-            ></rect>
-
+          <svg *ngSwitchCase="'automatizacion-e-ia'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="6" y="6" width="12" height="12" rx="2"></rect>
             <path d="M9 1v3"></path>
-
             <path d="M15 1v3"></path>
-
             <path d="M9 20v3"></path>
-
             <path d="M15 20v3"></path>
-
             <path d="M1 9h3"></path>
-
             <path d="M1 15h3"></path>
-
             <path d="M20 9h3"></path>
-
             <path d="M20 15h3"></path>
-
-            <circle
-              cx="10"
-              cy="11"
-              r="1"
-            ></circle>
-
-            <circle
-              cx="14"
-              cy="11"
-              r="1"
-            ></circle>
-
+            <circle cx="10" cy="11" r="1"></circle>
+            <circle cx="14" cy="11" r="1"></circle>
             <path d="M9 15h6"></path>
-
           </svg>
 
-
-          <!-- DATOS Y REPORTES -->
-
-          <svg
-            *ngSwitchCase="'datos-y-reportes'"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.6"
-            aria-hidden="true"
-          >
-
+          <svg *ngSwitchCase="'datos-y-reportes'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
             <path d="M4 19V5"></path>
-
             <path d="M4 19h17"></path>
-
             <path d="M7 15l4-4 3 2 5-6"></path>
-
-            <circle
-              cx="7"
-              cy="15"
-              r="1"
-            ></circle>
-
-            <circle
-              cx="11"
-              cy="11"
-              r="1"
-            ></circle>
-
-            <circle
-              cx="14"
-              cy="13"
-              r="1"
-            ></circle>
-
-            <circle
-              cx="19"
-              cy="7"
-              r="1"
-            ></circle>
-
+            <circle cx="7" cy="15" r="1"></circle>
+            <circle cx="11" cy="11" r="1"></circle>
+            <circle cx="14" cy="13" r="1"></circle>
+            <circle cx="19" cy="7" r="1"></circle>
           </svg>
 
-
-          <!-- SOPORTE TECNOLÓGICO -->
-
-          <svg
-            *ngSwitchCase="'soporte-tecnologico'"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.6"
-            aria-hidden="true"
-          >
-
+          <svg *ngSwitchCase="'soporte-tecnologico'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
             <path d="M4 13a8 8 0 0 1 16 0"></path>
-
-            <path
-              d="M4 13v4a2 2 0 0 0 2 2h2v-6H6a2 2 0 0 0-2 2"
-            ></path>
-
-            <path
-              d="M20 13v4a2 2 0 0 1-2 2h-2v-6h2a2 2 0 0 1 2 2"
-            ></path>
-
+            <path d="M4 13v4a2 2 0 0 0 2 2h2v-6H6a2 2 0 0 0-2 2"></path>
+            <path d="M20 13v4a2 2 0 0 1-2 2h-2v-6h2a2 2 0 0 1 2 2"></path>
             <path d="M16 19c0 1.1-1.8 2-4 2"></path>
-
           </svg>
 
         </div>
 
-
-        <!-- TÍTULO -->
-
-        <h3>
-          {{ servicio.titulo }}
-        </h3>
-
-
-        <!-- DIVISOR -->
-
+        <h3>{{ servicio.titulo }}</h3>
         <div class="carousel-divider"></div>
-
-
-        <!-- DESCRIPCIÓN -->
-
-        <p>
-          {{ servicio.subtitulo }}
-        </p>
-
-
-        <!-- BOTÓN -->
-
-        <span class="carousel-btn">
-          Conocer más
-        </span>
+        <p>{{ servicio.subtitulo }}</p>
+        <span class="carousel-btn">Conocer más</span>
 
       </article>
 
     </div>
-
-
-    <!-- BOTÓN SIGUIENTE -->
 
     <button
       class="carousel-arrow carousel-arrow-right"
       (click)="siguiente()"
       [disabled]="!puedeAvanzar"
       aria-label="Siguiente servicio"
-    >
-      ›
-    </button>
+    >›</button>
 
   </div>
 
 </section>
 
 
-
 <!-- =========================================================
-     CTA SOLUCIONES
+     SOLUCIONES
 ========================================================= -->
 
-<section class="solutions-cta">
+<section class="business-section" id="soluciones">
 
-  <div class="solutions-content">
+  <div class="business-content">
 
-    <span class="section-label">
-      SOLUCIONES PARA TU NEGOCIO
-    </span>
+    <span class="section-label">SOLUCIONES PARA TU NEGOCIO</span>
 
     <h2>
       Tú encárgate de tu negocio.
-      <span>
-        NEXORA se encarga de la tecnología.
-      </span>
+      <span>NEXORA se encarga de la tecnología.</span>
     </h2>
 
     <p>
@@ -660,10 +344,7 @@
       reales de cada negocio.
     </p>
 
-    <a
-      href="#servicios"
-      class="primary-btn"
-    >
+    <a href="#servicios" class="primary-btn">
       Conocer nuestras soluciones
     </a>
 
@@ -672,18 +353,15 @@
 </section>
 
 
-
 <!-- =========================================================
      SOBRE NEXORA
 ========================================================= -->
 
-<section class="about-section">
+<section class="about-section" id="nosotros">
 
   <div class="about-content">
 
-    <span class="section-label">
-      SOBRE NEXORA
-    </span>
+    <span class="section-label">SOBRE NEXORA</span>
 
     <h2>
       Tecnología para hacer
@@ -707,30 +385,25 @@
 </section>
 
 
-
 <!-- =========================================================
      CONTACTO
 ========================================================= -->
 
-<section class="contact-section">
+<section class="contact-section" id="contacto">
 
   <div class="contact-content">
 
-    <span class="section-label">
-      HABLEMOS
-    </span>
+    <span class="section-label">HABLEMOS</span>
 
-    <h2>
-      ¿Tienes un problema tecnológico?
-    </h2>
+    <h2>¿Tienes un problema tecnológico?</h2>
 
     <p>
       Cuéntanos qué necesita tu negocio y
       encontraremos una solución.
     </p>
 
-    <a
-      href="https://wa.me/51907520777?text=Hola%2C%20quiero%20solicitar%20una%20asesor%C3%ADa%20para%20mi%20negocio."
+    
+      <a href="https://wa.me/51907520777?text=Hola%2C%20quiero%20solicitar%20una%20asesor%C3%ADa%20para%20mi%20negocio."
       target="_blank"
       rel="noopener"
       class="primary-btn"
@@ -742,3 +415,13 @@
 
 </section>
 
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+  <div class="footer-logo">NEXORA</div>
+  <p>Tecnología para hacer crecer tu negocio.</p>
+  <div class="footer-copy">© 2026 NEXORA. Todos los derechos reservados.</div>
+</footer>

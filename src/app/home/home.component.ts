@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SERVICIOS, Servicio } from '../data/services.data';
@@ -10,10 +10,32 @@ import { SERVICIOS, Servicio } from '../data/services.data';
   templateUrl: './home.component.html',
   styleUrl: '../app.css'
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
   servicios: Servicio[] = SERVICIOS;
   indiceCarrusel = 0;
   porPagina = 3;
+
+  @ViewChild('heroVideo') heroVideoRef?: ElementRef<HTMLVideoElement>;
+  @ViewChild('problemsVideo') problemsVideoRef?: ElementRef<HTMLVideoElement>;
+
+  ngAfterViewInit(): void {
+    this.asegurarReproduccion(this.heroVideoRef);
+    this.asegurarReproduccion(this.problemsVideoRef);
+  }
+
+  private asegurarReproduccion(videoRef?: ElementRef<HTMLVideoElement>): void {
+  const video = videoRef?.nativeElement;
+  if (!video) return;
+
+  video.load();
+
+  const intentarPlay = () => {
+    video.play().catch(() => {});
+  };
+
+  video.addEventListener('canplay', intentarPlay, { once: true });
+  video.addEventListener('loadeddata', intentarPlay, { once: true });
+}
 
   get serviciosVisibles(): Servicio[] {
     return this.servicios.slice(this.indiceCarrusel, this.indiceCarrusel + this.porPagina);
