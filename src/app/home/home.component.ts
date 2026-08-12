@@ -27,19 +27,34 @@ export class HomeComponent implements AfterViewInit {
   const video = videoRef?.nativeElement;
   if (!video) return;
 
-  video.load();
+  video.muted = true;
+  video.defaultMuted = true;
+  video.playsInline = true;
 
   const intentarPlay = () => {
-    video.play().catch(() => {});
+    video.play().catch(() => {
+      const reintentar = () => {
+        video.play().catch(() => {});
+      };
+      document.addEventListener('click', reintentar, { once: true });
+      document.addEventListener('touchstart', reintentar, { once: true });
+      document.addEventListener('scroll', reintentar, { once: true });
+    });
   };
 
-  video.addEventListener('canplay', intentarPlay, { once: true });
-  video.addEventListener('loadeddata', intentarPlay, { once: true });
-}
-
-  get serviciosVisibles(): Servicio[] {
-    return this.servicios.slice(this.indiceCarrusel, this.indiceCarrusel + this.porPagina);
+  if (video.readyState >= 3) {
+    intentarPlay();
+  } else {
+    video.addEventListener('canplay', intentarPlay, { once: true });
+    video.addEventListener('loadeddata', intentarPlay, { once: true });
   }
+}
+get serviciosVisibles(): Servicio[] {
+  if (typeof window !== 'undefined' && window.innerWidth <= 700) {
+    return this.servicios;
+  }
+  return this.servicios.slice(this.indiceCarrusel, this.indiceCarrusel + this.porPagina);
+}
 
   get puedeRetroceder(): boolean {
     return this.indiceCarrusel > 0;
