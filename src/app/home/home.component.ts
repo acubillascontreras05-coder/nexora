@@ -19,42 +19,41 @@ export class HomeComponent implements AfterViewInit {
   @ViewChild('problemsVideo') problemsVideoRef?: ElementRef<HTMLVideoElement>;
 
   ngAfterViewInit(): void {
-    this.asegurarReproduccion(this.heroVideoRef);
-    this.asegurarReproduccion(this.problemsVideoRef);
+    const esMovil = window.innerWidth <= 700;
+
+    this.prepararVideo(
+      this.heroVideoRef,
+      esMovil ? '/videos/nexora-bg-mobile.mp4' : '/videos/nexora-bg.mp4'
+    );
+
+    this.prepararVideo(
+      this.problemsVideoRef,
+      esMovil ? '/videos/problemas-mobile.mp4' : '/videos/14492092_1920_1080_30fps.mp4'
+    );
   }
 
-  private asegurarReproduccion(videoRef?: ElementRef<HTMLVideoElement>): void {
-  const video = videoRef?.nativeElement;
-  if (!video) return;
+  private prepararVideo(videoRef: ElementRef<HTMLVideoElement> | undefined, src: string): void {
+    const video = videoRef?.nativeElement;
+    if (!video) return;
 
-  video.muted = true;
-  video.defaultMuted = true;
-  video.playsInline = true;
+    const source = video.querySelector('source');
+    if (source) {
+      source.src = src;
+    }
 
-  const intentarPlay = () => {
-    video.play().catch(() => {
-      const reintentar = () => {
-        video.play().catch(() => {});
-      };
-      document.addEventListener('click', reintentar, { once: true });
-      document.addEventListener('touchstart', reintentar, { once: true });
-      document.addEventListener('scroll', reintentar, { once: true });
-    });
-  };
+    video.load();
 
-  if (video.readyState >= 3) {
-    intentarPlay();
-  } else {
+    const intentarPlay = () => {
+      video.play().catch(() => {});
+    };
+
     video.addEventListener('canplay', intentarPlay, { once: true });
     video.addEventListener('loadeddata', intentarPlay, { once: true });
   }
-}
-get serviciosVisibles(): Servicio[] {
-  if (typeof window !== 'undefined' && window.innerWidth <= 700) {
-    return this.servicios;
+
+  get serviciosVisibles(): Servicio[] {
+    return this.servicios.slice(this.indiceCarrusel, this.indiceCarrusel + this.porPagina);
   }
-  return this.servicios.slice(this.indiceCarrusel, this.indiceCarrusel + this.porPagina);
-}
 
   get puedeRetroceder(): boolean {
     return this.indiceCarrusel > 0;

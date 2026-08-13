@@ -1680,3 +1680,17 @@ footer p {
   width: 30px;
   height: 30px;
 }
+/* =====================================================
+   ÁREA SEGURA PARA IPHONE (NOTCH / DYNAMIC ISLAND)
+===================================================== */
+
+nav {
+  padding-top: calc(28px + env(safe-area-inset-top));
+}
+
+@media (max-width: 600px) {
+  nav {
+    padding-top: calc(22px + env(safe-area-inset-top));
+  }
+}
+
