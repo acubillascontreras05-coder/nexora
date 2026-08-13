@@ -1,77 +1,427 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { SERVICIOS, Servicio } from '../data/services.data';
+<!-- =========================================================
+     HERO PRINCIPAL
+========================================================= -->
 
-@Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './home.component.html',
-  styleUrl: '../app.css'
-})
-export class HomeComponent implements AfterViewInit {
-  servicios: Servicio[] = SERVICIOS;
-  indiceCarrusel = 0;
-  porPagina = 3;
+<section class="hero-section hero" id="inicio">
 
-  @ViewChild('heroVideo') heroVideoRef?: ElementRef<HTMLVideoElement>;
-  @ViewChild('problemsVideo') problemsVideoRef?: ElementRef<HTMLVideoElement>;
+  <!-- VIDEO DE FONDO -->
+ <video #heroVideo class="hero-video" autoplay muted loop playsinline preload="auto">
+    <source src="/videos/nexora-bg.mp4" type="video/mp4" />
+    Tu navegador no soporta videos HTML5.
+  </video>
 
-  ngAfterViewInit(): void {
-    const esMovil = window.innerWidth <= 700;
+  <div class="hero-overlay"></div>
 
-    this.prepararVideo(
-      this.heroVideoRef,
-      esMovil ? '/videos/nexora-bg-mobile.mp4' : '/videos/nexora-bg.mp4'
-    );
+  <!-- CONTENIDO DEL HERO -->
+  <div class="hero-content">
 
-    this.prepararVideo(
-      this.problemsVideoRef,
-      esMovil ? '/videos/problemas-mobile.mp4' : '/videos/14492092_1920_1080_30fps.mp4'
-    );
-  }
+    <span class="badge">
+      SOLUCIONES DIGITALES EMPRESARIALES
+    </span>
 
-  private prepararVideo(videoRef: ElementRef<HTMLVideoElement> | undefined, src: string): void {
-    const video = videoRef?.nativeElement;
-    if (!video) return;
+    <h1>
+      Tecnología que impulsa
+      <span>tu negocio.</span>
+    </h1>
 
-    const source = video.querySelector('source');
-    if (source) {
-      source.src = src;
-    }
+    <p>
+      Ayudamos a empresas, tiendas, bodegas y emprendimientos
+      a digitalizar, automatizar y mejorar sus operaciones
+      mediante tecnología.
+    </p>
 
-    video.load();
+    <div class="hero-buttons">
 
-    const intentarPlay = () => {
-      video.play().catch(() => {});
-    };
+      
+       <a href="https://wa.me/51907520777?text=Hola%2C%20quiero%20solicitar%20una%20asesor%C3%ADa%20para%20mi%20negocio."
+        target="_blank"
+        rel="noopener"
+        class="primary-btn"
+      >
+        Solicitar asesoría
+      </a>
 
-    video.addEventListener('canplay', intentarPlay, { once: true });
-    video.addEventListener('loadeddata', intentarPlay, { once: true });
-  }
+      <a href="#soluciones" class="secondary-btn">
+        Conocer más
+      </a>
 
-  get serviciosVisibles(): Servicio[] {
-    return this.servicios.slice(this.indiceCarrusel, this.indiceCarrusel + this.porPagina);
-  }
+    </div>
 
-  get puedeRetroceder(): boolean {
-    return this.indiceCarrusel > 0;
-  }
+    <div class="stats">
 
-  get puedeAvanzar(): boolean {
-    return this.indiceCarrusel + this.porPagina < this.servicios.length;
-  }
+      <div>
+        <strong>+100</strong>
+        <small>Empresas</small>
+      </div>
 
-  anterior(): void {
-    if (this.puedeRetroceder) {
-      this.indiceCarrusel--;
-    }
-  }
+      <div>
+        <strong>24/7</strong>
+        <small>Soporte</small>
+      </div>
 
-  siguiente(): void {
-    if (this.puedeAvanzar) {
-      this.indiceCarrusel++;
-    }
-  }
-}
+      <div>
+        <strong>100%</strong>
+        <small>Digital</small>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="hero-visual">
+
+    <div class="glow"></div>
+
+    <div class="tech-card">
+
+      <div class="card-top">
+        <span>●</span>
+        <span>●</span>
+        <span>●</span>
+      </div>
+
+      <div class="dashboard">
+
+        <div class="dashboard-title">
+          NEXORA BUSINESS
+        </div>
+
+        <div class="dashboard-boxes">
+
+          <div>
+            <small>Ventas</small>
+            <strong>S/ 24,850</strong>
+          </div>
+
+          <div>
+            <small>Clientes</small>
+            <strong>+328</strong>
+          </div>
+
+        </div>
+
+        <div class="chart">
+          <div class="bar bar-1"></div>
+          <div class="bar bar-2"></div>
+          <div class="bar bar-3"></div>
+          <div class="bar bar-4"></div>
+          <div class="bar bar-5"></div>
+          <div class="bar bar-6"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     SEGUNDO HERO / PROBLEMAS
+========================================================= -->
+
+<section class="problems-section" id="problemas">
+
+  <!-- VIDEO DE FONDO -->
+  <video #problemsVideo class="problems-video" autoplay muted loop playsinline preload="auto">
+    <source src="/videos/14492092_1920_1080_30fps.mp4" type="video/mp4" />
+    Tu navegador no soporta videos HTML5.
+  </video>
+
+  <div class="problems-overlay"></div>
+
+  <!-- CONTENIDO -->
+  <div class="problems-content">
+
+    <div class="section-intro">
+
+      <span class="section-label">
+        SOLUCIONES REALES
+      </span>
+
+      <h2>
+        ¿Qué problema tiene
+        tu negocio?
+      </h2>
+
+      <p>
+        No importa si tienes una bodega, una tienda,
+        un restaurante o una empresa. En NEXORA
+        encontramos la tecnología que necesitas.
+      </p>
+
+    </div>
+
+    <!-- 4 TARJETAS -->
+    <div class="problems-grid">
+
+      <article class="problem-card" routerLink="/soluciones/inventario">
+        <div class="problem-number">01</div>
+        <h3>¿No controlas tu inventario?</h3>
+        <p>
+          Digitalizamos tus productos, stock, compras
+          y movimientos para que siempre sepas
+          qué tienes disponible.
+        </p>
+        <span class="problem-solution">→ Sistema de inventario</span>
+      </article>
+
+      <article class="problem-card" routerLink="/soluciones/ventas">
+        <div class="problem-number">02</div>
+        <h3>¿Tus ventas están desordenadas?</h3>
+        <p>
+          Creamos sistemas para controlar ventas,
+          caja, clientes y productos desde un
+          solo lugar.
+        </p>
+        <span class="problem-solution">→ Sistema de ventas</span>
+      </article>
+
+      <article class="problem-card" routerLink="/soluciones/presencia-digital">
+        <div class="problem-number">03</div>
+        <h3>¿Tu negocio no tiene presencia digital?</h3>
+        <p>
+          Diseñamos páginas web, catálogos digitales
+          y tiendas online para que tus clientes
+          puedan encontrarte.
+        </p>
+        <span class="problem-solution">→ Presencia digital</span>
+      </article>
+
+      <article class="problem-card" routerLink="/soluciones/automatizacion">
+        <div class="problem-number">04</div>
+        <h3>¿Pierdes tiempo haciendo tareas manuales?</h3>
+        <p>
+          Automatizamos procesos repetitivos para
+          que puedas dedicar más tiempo a hacer
+          crecer tu negocio.
+        </p>
+        <span class="problem-solution">→ Automatización</span>
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     SERVICIOS
+========================================================= -->
+
+<section class="services-section" id="servicios">
+
+  <div class="services-header">
+    <span class="section-label">SERVICIOS</span>
+    <h2>
+      Todo lo que tu negocio
+      necesita para crecer.
+    </h2>
+    <p>
+      Tecnología diseñada para simplificar tus procesos
+      y ayudarte a trabajar de manera más eficiente.
+    </p>
+  </div>
+
+  <div class="services-carousel">
+
+    <button
+      class="carousel-arrow carousel-arrow-left"
+      (click)="anterior()"
+      [disabled]="!puedeRetroceder"
+      aria-label="Servicio anterior"
+    >‹</button>
+
+    <div class="carousel-track">
+
+      <article
+        class="carousel-card"
+        *ngFor="let servicio of serviciosVisibles"
+        [routerLink]="'/servicios/' + servicio.slug"
+      >
+
+        <div class="carousel-icon" [ngSwitch]="servicio.slug">
+
+          <svg *ngSwitchCase="'sistemas-empresariales'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+            <path d="M3 9h18"></path>
+            <path d="M8 13h3"></path>
+            <path d="M8 17h8"></path>
+          </svg>
+
+          <svg *ngSwitchCase="'paginas-web'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+            <path d="M3 9h18"></path>
+            <path d="M8 14l-2 2 2 2"></path>
+            <path d="M12 14l2 4"></path>
+            <path d="M16 14l2 2-2 2"></path>
+          </svg>
+
+          <svg *ngSwitchCase="'inventario-y-ventas'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M4 7h16v13H4z"></path>
+            <path d="M8 7V5h8v2"></path>
+            <path d="M8 11h8"></path>
+            <path d="M8 15h5"></path>
+          </svg>
+
+          <svg *ngSwitchCase="'automatizacion-e-ia'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="6" y="6" width="12" height="12" rx="2"></rect>
+            <path d="M9 1v3"></path>
+            <path d="M15 1v3"></path>
+            <path d="M9 20v3"></path>
+            <path d="M15 20v3"></path>
+            <path d="M1 9h3"></path>
+            <path d="M1 15h3"></path>
+            <path d="M20 9h3"></path>
+            <path d="M20 15h3"></path>
+            <circle cx="10" cy="11" r="1"></circle>
+            <circle cx="14" cy="11" r="1"></circle>
+            <path d="M9 15h6"></path>
+          </svg>
+
+          <svg *ngSwitchCase="'datos-y-reportes'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M4 19V5"></path>
+            <path d="M4 19h17"></path>
+            <path d="M7 15l4-4 3 2 5-6"></path>
+            <circle cx="7" cy="15" r="1"></circle>
+            <circle cx="11" cy="11" r="1"></circle>
+            <circle cx="14" cy="13" r="1"></circle>
+            <circle cx="19" cy="7" r="1"></circle>
+          </svg>
+
+          <svg *ngSwitchCase="'soporte-tecnologico'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M4 13a8 8 0 0 1 16 0"></path>
+            <path d="M4 13v4a2 2 0 0 0 2 2h2v-6H6a2 2 0 0 0-2 2"></path>
+            <path d="M20 13v4a2 2 0 0 1-2 2h-2v-6h2a2 2 0 0 1 2 2"></path>
+            <path d="M16 19c0 1.1-1.8 2-4 2"></path>
+          </svg>
+
+        </div>
+
+        <h3>{{ servicio.titulo }}</h3>
+        <div class="carousel-divider"></div>
+        <p>{{ servicio.subtitulo }}</p>
+        <span class="carousel-btn">Conocer más</span>
+
+      </article>
+
+    </div>
+
+    <button
+      class="carousel-arrow carousel-arrow-right"
+      (click)="siguiente()"
+      [disabled]="!puedeAvanzar"
+      aria-label="Siguiente servicio"
+    >›</button>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     SOLUCIONES
+========================================================= -->
+
+<section class="business-section" id="soluciones">
+
+  <div class="business-content">
+
+    <span class="section-label">SOLUCIONES PARA TU NEGOCIO</span>
+
+    <h2>
+      Tú encárgate de tu negocio.
+      <span>NEXORA se encarga de la tecnología.</span>
+    </h2>
+
+    <p>
+      Desde una pequeña bodega hasta una empresa en crecimiento,
+      desarrollamos soluciones adaptadas a las necesidades
+      reales de cada negocio.
+    </p>
+
+    <a href="#servicios" class="primary-btn">
+      Conocer nuestras soluciones
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     SOBRE NEXORA
+========================================================= -->
+
+<section class="about-section" id="nosotros">
+
+  <div class="about-content">
+
+    <span class="section-label">SOBRE NEXORA</span>
+
+    <h2>
+      Tecnología para hacer
+      crecer tu negocio.
+    </h2>
+
+    <p>
+      NEXORA nace con una idea sencilla: cualquier negocio,
+      sin importar su tamaño, debería poder acceder a
+      tecnología que le permita trabajar mejor.
+    </p>
+
+    <p>
+      Creamos software, páginas web, sistemas de gestión,
+      automatizaciones y soluciones digitales pensadas
+      para resolver problemas reales.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACTO
+========================================================= -->
+
+<section class="contact-section" id="contacto">
+
+  <div class="contact-content">
+
+    <span class="section-label">HABLEMOS</span>
+
+    <h2>¿Tienes un problema tecnológico?</h2>
+
+    <p>
+      Cuéntanos qué necesita tu negocio y
+      encontraremos una solución.
+    </p>
+
+    
+      <a href="https://wa.me/51907520777?text=Hola%2C%20quiero%20solicitar%20una%20asesor%C3%ADa%20para%20mi%20negocio."
+      target="_blank"
+      rel="noopener"
+      class="primary-btn"
+    >
+      Solicitar asesoría
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+  <div class="footer-logo">NEXORA</div>
+  <p>Tecnología para hacer crecer tu negocio.</p>
+  <div class="footer-copy">© 2026 NEXORA. Todos los derechos reservados.</div>
+</footer>
