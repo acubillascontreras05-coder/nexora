@@ -36,19 +36,34 @@ export class HomeComponent implements AfterViewInit {
     const video = videoRef?.nativeElement;
     if (!video) return;
 
-    const source = video.querySelector('source');
-    if (source) {
-      source.src = src;
-    }
-
-    video.load();
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
 
     const intentarPlay = () => {
-      video.play().catch(() => {});
+      video.play().catch(() => {
+        const reintentar = () => video.play().catch(() => {});
+        document.addEventListener('click', reintentar, { once: true });
+        document.addEventListener('touchstart', reintentar, { once: true });
+        document.addEventListener('scroll', reintentar, { once: true });
+      });
     };
 
-    video.addEventListener('canplay', intentarPlay, { once: true });
-    video.addEventListener('loadeddata', intentarPlay, { once: true });
+    const source = video.querySelector('source');
+    const srcActual = source?.getAttribute('src');
+    const necesitaCambiarSrc = source && srcActual !== src;
+
+    if (necesitaCambiarSrc) {
+      source.src = src;
+      video.addEventListener('canplay', intentarPlay, { once: true });
+      video.addEventListener('loadeddata', intentarPlay, { once: true });
+      video.load();
+    } else if (video.readyState >= 3) {
+      intentarPlay();
+    } else {
+      video.addEventListener('canplay', intentarPlay, { once: true });
+      video.addEventListener('loadeddata', intentarPlay, { once: true });
+    }
   }
 
   get serviciosVisibles(): Servicio[] {
